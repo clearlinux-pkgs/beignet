@@ -1,0 +1,33 @@
+--- beignet-3/utests/compiler_workgroup_scan_exclusive.cpp~	2016-06-12 09:24:04.000000000 +0000
++++ beignet-3/utests/compiler_workgroup_scan_exclusive.cpp	2016-06-12 19:13:03.490041347 +0000
+@@ -171,7 +171,7 @@
+       else {
+           float num_computed = ((T *)buf_data[1])[i];
+           float num_expected = *(expected + i);
+-          float num_diff = abs(num_computed - num_expected) / abs(num_expected);
++          float num_diff = 1.0 * abs(num_computed - num_expected) / (1.0 * abs(num_expected));
+           if(num_diff > 0.01f){
+             mismatches++;
+ 
+--- beignet-3/utests/compiler_workgroup_scan_inclusive.cpp~	2016-06-12 09:24:04.000000000 +0000
++++ beignet-3/utests/compiler_workgroup_scan_inclusive.cpp	2016-06-12 19:26:21.731607495 +0000
+@@ -161,7 +162,7 @@
+       else {
+           float num_computed = ((T *)buf_data[1])[i];
+           float num_expected = *(expected + i);
+-          float num_diff = abs(num_computed - num_expected) / abs(num_expected);
++          float num_diff = 1.0 * abs(num_computed - num_expected) / (1.0 * abs(num_expected));
+           if(num_diff > 0.01f){
+             mismatches++;
+ 
+--- beignet-3/utests/compiler_workgroup_reduce.cpp~	2016-06-12 09:24:04.000000000 +0000
++++ beignet-3/utests/compiler_workgroup_reduce.cpp	2016-06-12 19:35:25.574711501 +0000
+@@ -190,7 +191,7 @@
+       else {
+         float num_computed = ((T *)buf_data[1])[i];
+         float num_expected = *(expected + i);
+-        float num_diff = abs(num_computed - num_expected) / abs(num_expected);
++        float num_diff = 1.0 * abs(num_computed - num_expected) / (1.0 * abs(num_expected));
+         if (num_diff > 0.01f) {
+           mismatches++;
+ 

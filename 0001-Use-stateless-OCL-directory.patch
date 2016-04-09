@@ -1,0 +1,26 @@
+From 4c494b79fc14ec8069fcb029da85e4f3ec741b06 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <michael.i.doherty@intel.com>
+Date: Fri, 15 Apr 2016 14:53:53 +0100
+Subject: [PATCH] Use stateless OCL directory
+
+Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 97725ca..a9e2114 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -212,7 +212,7 @@ IF(OCLIcd_FOUND)
+     "intel-beignet.icd.in"
+     "${ICD_FILE_NAME}"
+   )
+-  install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${ICD_FILE_NAME} DESTINATION /etc/OpenCL/vendors)
++  install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${ICD_FILE_NAME} DESTINATION /usr/share/OpenCL/vendors)
+ ELSE(OCLIcd_FOUND)
+   MESSAGE(STATUS "Looking for OCL ICD header file - not found")
+ ENDIF(OCLIcd_FOUND)
+-- 
+2.8.1
+
