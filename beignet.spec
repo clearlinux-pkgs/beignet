@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 14
-URL      : https://cgit.freedesktop.org/beignet/snapshot/23bfe12767f6ebe2685b8dfce4b67fd325e7b738.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/23bfe12767f6ebe2685b8dfce4b67fd325e7b738.tar.gz
+Release  : 15
+URL      : https://cgit.freedesktop.org/beignet/snapshot/2de87cd63a80dbd4ea4e8e4ce3af8e0535b910cb.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/2de87cd63a80dbd4ea4e8e4ce3af8e0535b910cb.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -62,7 +62,7 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 23bfe12767f6ebe2685b8dfce4b67fd325e7b738
+%setup -q -n 2de87cd63a80dbd4ea4e8e4ce3af8e0535b910cb
 %patch1 -p1
 %patch2 -p1
 
@@ -74,7 +74,7 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DCMAKE_RANLIB=/usr/bin/gcc-ranlib
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
