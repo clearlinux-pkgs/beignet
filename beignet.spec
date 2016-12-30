@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 15
-URL      : https://cgit.freedesktop.org/beignet/snapshot/2de87cd63a80dbd4ea4e8e4ce3af8e0535b910cb.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/2de87cd63a80dbd4ea4e8e4ce3af8e0535b910cb.tar.gz
+Release  : 16
+URL      : https://cgit.freedesktop.org/beignet/snapshot/86b092aedf311b39ada5e86c39d4052fba42fc66.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/86b092aedf311b39ada5e86c39d4052fba42fc66.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -16,6 +16,7 @@ BuildRequires : cmake
 BuildRequires : libdrm-dev
 BuildRequires : llvm-dev
 BuildRequires : ncurses-dev
+BuildRequires : pciutils
 BuildRequires : pkgconfig(OpenCL)
 BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(x11)
@@ -62,7 +63,7 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 2de87cd63a80dbd4ea4e8e4ce3af8e0535b910cb
+%setup -q -n 86b092aedf311b39ada5e86c39d4052fba42fc66
 %patch1 -p1
 %patch2 -p1
 
@@ -74,7 +75,7 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
@@ -88,6 +89,8 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/beignet/beignet.bc
 /usr/lib64/beignet/beignet.pch
+/usr/lib64/beignet/beignet_20.bc
+/usr/lib64/beignet/beignet_20.pch
 
 %files data
 %defattr(-,root,root,-)
@@ -114,6 +117,7 @@ popd
 /usr/lib64/beignet/include/ocl_common.h
 /usr/lib64/beignet/include/ocl_convert.h
 /usr/lib64/beignet/include/ocl_defines.h
+/usr/lib64/beignet/include/ocl_enqueue.h
 /usr/lib64/beignet/include/ocl_float.h
 /usr/lib64/beignet/include/ocl_geometric.h
 /usr/lib64/beignet/include/ocl_image.h

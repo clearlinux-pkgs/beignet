@@ -4,3 +4,4 @@ llvm-dev
 libdrm-dev
 zlib-dev
 ncurses-dev
+pciutils
