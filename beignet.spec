@@ -4,7 +4,7 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 17
+Release  : 18
 URL      : https://cgit.freedesktop.org/beignet/snapshot/674003708fabd5b5919f8091f03cc46612821830.tar.gz
 Source0  : https://cgit.freedesktop.org/beignet/snapshot/674003708fabd5b5919f8091f03cc46612821830.tar.gz
 Summary  : No detailed summary available
@@ -69,6 +69,7 @@ lib components for the beignet package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484423675
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -80,6 +81,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
+export SOURCE_DATE_EPOCH=1484423675
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
