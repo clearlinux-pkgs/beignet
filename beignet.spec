@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 16
-URL      : https://cgit.freedesktop.org/beignet/snapshot/86b092aedf311b39ada5e86c39d4052fba42fc66.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/86b092aedf311b39ada5e86c39d4052fba42fc66.tar.gz
+Release  : 17
+URL      : https://cgit.freedesktop.org/beignet/snapshot/674003708fabd5b5919f8091f03cc46612821830.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/674003708fabd5b5919f8091f03cc46612821830.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -63,7 +63,7 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 86b092aedf311b39ada5e86c39d4052fba42fc66
+%setup -q -n 674003708fabd5b5919f8091f03cc46612821830
 %patch1 -p1
 %patch2 -p1
 
