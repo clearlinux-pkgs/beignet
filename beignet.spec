@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 18
-URL      : https://cgit.freedesktop.org/beignet/snapshot/674003708fabd5b5919f8091f03cc46612821830.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/674003708fabd5b5919f8091f03cc46612821830.tar.gz
+Release  : 19
+URL      : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -63,13 +63,13 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 674003708fabd5b5919f8091f03cc46612821830
+%setup -q -n be0ae741a9064cebf5b5c9a277ae895086bdbddd
 %patch1 -p1
 %patch2 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484423675
+export SOURCE_DATE_EPOCH=1485141502
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -81,7 +81,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1484423675
+export SOURCE_DATE_EPOCH=1485141502
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
