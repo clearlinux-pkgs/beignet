@@ -5,3 +5,4 @@ libdrm-dev
 zlib-dev
 ncurses-dev
 pciutils
+cmrt-dev

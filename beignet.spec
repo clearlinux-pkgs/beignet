@@ -4,7 +4,7 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 19
+Release  : 20
 URL      : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
 Source0  : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
 Summary  : No detailed summary available
@@ -13,6 +13,7 @@ License  : LGPL-2.1
 Requires: beignet-lib
 Requires: beignet-data
 BuildRequires : cmake
+BuildRequires : cmrt-dev
 BuildRequires : libdrm-dev
 BuildRequires : llvm-dev
 BuildRequires : ncurses-dev
@@ -69,7 +70,7 @@ lib components for the beignet package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485141502
+export SOURCE_DATE_EPOCH=1485141859
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -81,7 +82,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1485141502
+export SOURCE_DATE_EPOCH=1485141859
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
