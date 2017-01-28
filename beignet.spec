@@ -4,7 +4,7 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 20
+Release  : 21
 URL      : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
 Source0  : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
 Summary  : No detailed summary available
@@ -70,19 +70,19 @@ lib components for the beignet package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485141859
+export SOURCE_DATE_EPOCH=1485620819
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1485141859
+export SOURCE_DATE_EPOCH=1485620819
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
