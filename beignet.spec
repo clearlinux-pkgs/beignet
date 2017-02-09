@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 21
-URL      : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/be0ae741a9064cebf5b5c9a277ae895086bdbddd.tar.gz
+Release  : 22
+URL      : https://cgit.freedesktop.org/beignet/snapshot/2a0fae0a276b09c9fe6407e3a8a6db69d77ac410.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/2a0fae0a276b09c9fe6407e3a8a6db69d77ac410.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -64,25 +64,25 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n be0ae741a9064cebf5b5c9a277ae895086bdbddd
+%setup -q -n 2a0fae0a276b09c9fe6407e3a8a6db69d77ac410
 %patch1 -p1
 %patch2 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485620819
+export SOURCE_DATE_EPOCH=1486681803
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1485620819
+export SOURCE_DATE_EPOCH=1486681803
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
