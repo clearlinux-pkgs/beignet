@@ -25,6 +25,10 @@ BuildRequires : zlib-dev
 Patch1: 0001-Use-stateless-OCL-directory.patch
 Patch2: build.patch
 
+%define __strip /bin/true
+%define debug_package %{nil}
+
+
 %description
 Beignet
 =======
