@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 25
-URL      : https://cgit.freedesktop.org/beignet/snapshot/72e489f27e1b4f5ed3c986c3d3065a7640a30a88.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/72e489f27e1b4f5ed3c986c3d3065a7640a30a88.tar.gz
+Release  : 26
+URL      : https://cgit.freedesktop.org/beignet/snapshot/f66ce212fca9be51abdcbeb5a3d37451c01c8140.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/f66ce212fca9be51abdcbeb5a3d37451c01c8140.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -23,6 +23,9 @@ BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(x11)
 BuildRequires : python3-dev
 BuildRequires : zlib-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 Patch1: 0001-Use-stateless-OCL-directory.patch
 
 %description
@@ -64,12 +67,12 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 72e489f27e1b4f5ed3c986c3d3065a7640a30a88
+%setup -q -n f66ce212fca9be51abdcbeb5a3d37451c01c8140
 %patch1 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490109838
+export SOURCE_DATE_EPOCH=1490110131
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -81,7 +84,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1490109838
+export SOURCE_DATE_EPOCH=1490110131
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
