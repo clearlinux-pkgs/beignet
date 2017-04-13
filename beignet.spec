@@ -4,7 +4,7 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 27
+Release  : 28
 URL      : https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
 Source0  : https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
 Summary  : No detailed summary available
@@ -27,7 +27,7 @@ BuildRequires : zlib-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-Patch1: 0001-Use-stateless-OCL-directory.patch
+Patch1: llvm4.patch
 
 %description
 Beignet
@@ -73,7 +73,7 @@ lib components for the beignet package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1492089991
+export SOURCE_DATE_EPOCH=1492091002
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -85,7 +85,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1492089991
+export SOURCE_DATE_EPOCH=1492091002
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -100,7 +100,6 @@ popd
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/OpenCL/vendors/intel-beignet.icd
 /usr/share/metainfo/com.intel.beignet.metainfo.xml
 
 %files dev
