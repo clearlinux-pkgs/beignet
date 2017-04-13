@@ -1,5 +1,5 @@
 PKG_NAME := beignet
-URL := https://cgit.freedesktop.org/beignet/snapshot/f66ce212fca9be51abdcbeb5a3d37451c01c8140.tar.gz
+URL := https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
 
 
 include ../common/Makefile.common

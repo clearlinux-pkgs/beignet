@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 26
-URL      : https://cgit.freedesktop.org/beignet/snapshot/f66ce212fca9be51abdcbeb5a3d37451c01c8140.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/f66ce212fca9be51abdcbeb5a3d37451c01c8140.tar.gz
+Release  : 27
+URL      : https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -16,6 +16,7 @@ BuildRequires : cmake
 BuildRequires : cmrt-dev
 BuildRequires : libdrm-dev
 BuildRequires : llvm-dev
+BuildRequires : llvm-lib
 BuildRequires : ncurses-dev
 BuildRequires : pciutils
 BuildRequires : pkgconfig(OpenCL)
@@ -67,24 +68,24 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n f66ce212fca9be51abdcbeb5a3d37451c01c8140
+%setup -q -n 8e119eb32e01066c23c3d96bd2b42032e03f7628
 %patch1 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490110131
+export SOURCE_DATE_EPOCH=1492089991
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_INSTALL_DIR=/usr/bin
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1490110131
+export SOURCE_DATE_EPOCH=1492089991
 rm -rf %{buildroot}
 pushd clr-build
 %make_install

@@ -7,3 +7,4 @@ ncurses-dev
 pciutils
 cmrt-dev
 python3-dev
+llvm-lib
