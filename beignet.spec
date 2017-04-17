@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 28
-URL      : https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/8e119eb32e01066c23c3d96bd2b42032e03f7628.tar.gz
+Release  : 29
+URL      : https://cgit.freedesktop.org/beignet/snapshot/0f1fc752052152e03fddb648aaadcd35d028595a.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/0f1fc752052152e03fddb648aaadcd35d028595a.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -27,7 +27,6 @@ BuildRequires : zlib-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-Patch1: llvm4.patch
 
 %description
 Beignet
@@ -68,12 +67,11 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 8e119eb32e01066c23c3d96bd2b42032e03f7628
-%patch1 -p1
+%setup -q -n 0f1fc752052152e03fddb648aaadcd35d028595a
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1492091002
+export SOURCE_DATE_EPOCH=1492449157
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -85,7 +83,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1492091002
+export SOURCE_DATE_EPOCH=1492449157
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -130,6 +128,7 @@ popd
 /usr/lib64/beignet/include/ocl_integer.h
 /usr/lib64/beignet/include/ocl_math.h
 /usr/lib64/beignet/include/ocl_math_20.h
+/usr/lib64/beignet/include/ocl_math_common.h
 /usr/lib64/beignet/include/ocl_memcpy.h
 /usr/lib64/beignet/include/ocl_memset.h
 /usr/lib64/beignet/include/ocl_misc.h
