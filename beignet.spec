@@ -4,7 +4,7 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 29
+Release  : 30
 URL      : https://cgit.freedesktop.org/beignet/snapshot/0f1fc752052152e03fddb648aaadcd35d028595a.tar.gz
 Source0  : https://cgit.freedesktop.org/beignet/snapshot/0f1fc752052152e03fddb648aaadcd35d028595a.tar.gz
 Summary  : No detailed summary available
