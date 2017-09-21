@@ -4,9 +4,9 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 33
-URL      : https://cgit.freedesktop.org/beignet/snapshot/68c31b20e54a435975a9008ab93e760bc5cd193c.tar.gz
-Source0  : https://cgit.freedesktop.org/beignet/snapshot/68c31b20e54a435975a9008ab93e760bc5cd193c.tar.gz
+Release  : 34
+URL      : https://cgit.freedesktop.org/beignet/snapshot/2f2342ddc986cf23af7e1aaa5a26fd6252887393.tar.gz
+Source0  : https://cgit.freedesktop.org/beignet/snapshot/2f2342ddc986cf23af7e1aaa5a26fd6252887393.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -67,26 +67,26 @@ lib components for the beignet package.
 
 
 %prep
-%setup -q -n 68c31b20e54a435975a9008ab93e760bc5cd193c
+%setup -q -n 2f2342ddc986cf23af7e1aaa5a26fd6252887393
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495215023
+export SOURCE_DATE_EPOCH=1506002771
 mkdir clr-build
 pushd clr-build
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_INSTALL_DIR=/usr/bin
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_INSTALL_DIR=/usr/bin
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1495215023
+export SOURCE_DATE_EPOCH=1506002771
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
