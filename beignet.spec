@@ -4,7 +4,7 @@
 #
 Name     : beignet
 Version  : 1
-Release  : 38
+Release  : 39
 URL      : https://cgit.freedesktop.org/beignet/snapshot/8714b107cd8794f0818a281dfc56c0e49af05ba1.tar.gz
 Source0  : https://cgit.freedesktop.org/beignet/snapshot/8714b107cd8794f0818a281dfc56c0e49af05ba1.tar.gz
 Summary  : No detailed summary available
@@ -27,6 +27,7 @@ BuildRequires : zlib-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: llvm6-compat.patch
 
 %description
 Beignet
@@ -68,13 +69,14 @@ lib components for the beignet package.
 
 %prep
 %setup -q -n 8714b107cd8794f0818a281dfc56c0e49af05ba1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1509037013
+export SOURCE_DATE_EPOCH=1527268926
 mkdir clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -82,11 +84,11 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-i
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DENABLE_OPENCL_20=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_INSTALL_DIR=/usr/bin
-make VERBOSE=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1509037013
+export SOURCE_DATE_EPOCH=1527268926
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
